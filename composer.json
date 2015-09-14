@@ -1,0 +1,13 @@
+{
+    "name": "altelma/laravel-mailchimp",
+    "description": "A packages provide you to connect with mailchimp API v3, so easiest.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ALTELMA",
+            "email": "phongthorn.a@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
