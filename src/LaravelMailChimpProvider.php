@@ -13,7 +13,9 @@ class LaravelMailChimpProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/config/mailchimp.php' => config_path('mailchimp.php')
+        ]);
     }
 
     /**
@@ -23,6 +25,6 @@ class LaravelMailChimpProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }
