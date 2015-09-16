@@ -1,6 +1,6 @@
 <?php
 
-namespace ALTELMA\LaravelMailchimp;
+namespace ALTELMA\LaravelMailChimp;
 
 use Illuminate\Support\ServiceProvider;
 

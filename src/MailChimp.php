@@ -1,5 +1,7 @@
 <?php
 
+namespace ALTELMA\LaravelMailChimp;
+
 class MailChimp
 {
 	private $apikey;
