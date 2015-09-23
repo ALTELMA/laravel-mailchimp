@@ -1,10 +1,10 @@
 <?php
 
-namespace ALTELMA\LaravelMailChimp;
+namespace LaravelMailChimp;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelMailChimpProvider extends ServiceProvider
+class MailChimpServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

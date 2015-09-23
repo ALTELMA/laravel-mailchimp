@@ -1,6 +1,6 @@
 <?php
 
-namespace ALTELMA\LaravelMailChimp;
+namespace LaravelMailChimp;
 
 class MailChimp
 {
