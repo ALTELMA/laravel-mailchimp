@@ -8,6 +8,13 @@
             "email": "phongthorn.a@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "LaravelMailChimp\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=5.5.0"
+    }
 }
