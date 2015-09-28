@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelMailchimp;
+namespace LaravelMailChimp;
 
 use Illuminate\Support\Facades\Facade;
 
