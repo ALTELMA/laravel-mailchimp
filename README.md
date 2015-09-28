@@ -4,6 +4,14 @@
 ```
 require composer altelma/laravel-mailchimp --prefer-dist dev-master
 ```
+or update your composer.json in root
+```
+{
+  "require": {
+    "altelma/laravel-mailchimp": "dev-master"
+  }
+}
+```
 
 #### Usage
 ```
