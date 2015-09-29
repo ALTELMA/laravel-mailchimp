@@ -25,7 +25,7 @@ class MailChimpServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('MailChimp', function($app){
+        $this->app->bind('MC', function($app){
             $config = $app['config']['mailchimp'];
             return new MailChimp($config['apikey']);
         });
