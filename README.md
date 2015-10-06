@@ -13,6 +13,27 @@ or update your composer.json in root
 }
 ```
 
+After installation finish. add this to your config/app.php
+
+```
+providers => [
+        LaravelMailChimp\MailChimpServiceProvider::class  
+],
+```
+
+For optional if you want to use Alias class you can add this to config/app.php
+```
+aliases => [
+      'MailChimp' => LaravelMailChimp\MailChimpFacde::class
+]
+```
+
+Make sure you never use "MailChimp" or exists this in your project.
+After you finish config all run artisan to create config
+```
+php artisan vendor::publish
+```
+
 #### Usage
 ```
 $mc = new MailChimp('Your API KEY');
