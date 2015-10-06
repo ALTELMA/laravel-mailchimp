@@ -1,6 +1,6 @@
 # laravel-mailchimp
 
-#### Installation
+## Installation
 ```
 require composer altelma/laravel-mailchimp --prefer-dist dev-master
 ```
@@ -34,14 +34,25 @@ After you finish config all run artisan to create config
 php artisan vendor::publish
 ```
 
-#### Usage
+## Usage
 ```
 $mc = new MailChimp('Your API KEY');
 $results = $mc->get('lists/your_directory_list/members');
-
 echo json_decode($results);
+
+// or
+return reponse()-json($results);
+
+// With Alias
+$results = MailChimp::get(''lists/your_directory_list/members'');
+echo json_decode($results);
+
+// or
+return reponse()-json($results);
+
 ```
 
-#### Bug report
+
+## Bug report
 This package is not perfect right, but can be improve together. If you found bug or have any suggestion.
 Send that to me or new issue. Thank you to use it.
