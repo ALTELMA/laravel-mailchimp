@@ -44,7 +44,7 @@ echo json_decode($results);
 return reponse()-json($results);
 
 // With Alias
-$results = MailChimp::get(''lists/your_directory_list/members'');
+$results = MailChimp::get('lists/your_directory_list/members');
 echo json_decode($results);
 
 // or
