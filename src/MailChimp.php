@@ -14,10 +14,10 @@ class MailChimp
 	}
 
 	private function getEndpoint($apikey) {
-		if (!strpos($apikey, 'us1') !== FALSE) {
+		// if (!strpos($apikey, 'us1') !== FALSE) {
 			$dc = explode('-', $apikey)[1];
 			$this->endpoint = str_replace('us1', $dc, $this->endpoint);
-		}
+		// }
 	}
 
 	public function get($method, $args = array())
