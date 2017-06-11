@@ -31,7 +31,7 @@ aliases => [
 Make sure you never use "MailChimp" or exists this in your project.
 After you finish config all run artisan to create config
 ```
-php artisan vendor::publish
+php artisan vendor:publish
 ```
 
 ## Usage
