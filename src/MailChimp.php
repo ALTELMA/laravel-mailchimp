@@ -56,7 +56,7 @@ class MailChimp
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/vnd.api+json',
 			'Content-Type: application/vnd.api+json',
 			'Authorization: apikey ' . $this->apikey));
-		curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		// curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
