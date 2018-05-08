@@ -32,4 +32,9 @@ class MailchimpServiceProvider extends ServiceProvider
             return new MailChimpService($token);
         });
     }
+    
+    public function provides()
+    {
+        return ['MailChimp'];
+    }
 }
