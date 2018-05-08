@@ -1,4 +1,4 @@
-# laravel-mailchimp
+# Laravel MailChimp
 
 ## Installation
 ```
