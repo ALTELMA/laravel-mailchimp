@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelMailChimp;
+namespace Altelma\LaravelMailChimp;
 
 use Illuminate\Support\Facades\Facade;
 
-class MailchimpFacade extends Facade
+class MailChimpFacade extends Facade
 {
 
     /**
@@ -14,6 +14,6 @@ class MailchimpFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'MC';
+        return 'MailChimp';
     }
 }
