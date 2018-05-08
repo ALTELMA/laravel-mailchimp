@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelMailChimp;
+namespace Altelma\LaravelMailChimp;
 
 use Illuminate\Support\ServiceProvider;
 
-class MailChimpServiceProvider extends ServiceProvider
+class MailchimpServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -12,10 +12,10 @@ class MailChimpServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+    {        
         $this->publishes([
-            __DIR__ . '/config/mailchimp.php' => config_path('mailchimp.php')
-        ]);
+            __DIR__.'/../config/mailchimp.php' => config_path('mailchimp.php'),
+        ], 'mailchimp');
     }
 
     /**
@@ -24,10 +24,12 @@ class MailChimpServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {
-        $this->app->bind('MC', function($app){
-            $config = $app['config']['mailchimp'];
-            return new MailChimp($config['apikey']);
+    {        
+        $this->mergeConfigFrom(__DIR__.'/../config/mailchimp.php', 'mailchimp');
+        $this->app->singleton('MailChimp', function ($app) {
+            $config = $app->make('config');
+            $token = $config->get('mailchimp.apikey');
+            return new MailChimpService($token);
         });
     }
 }
