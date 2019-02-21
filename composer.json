@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Altelma\\aravelMailChimp\\": "src/"
+            "Altelma\\LaravelMailChimp\\": "src/"
         }
     },
     "extra": {
