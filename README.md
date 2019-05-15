@@ -31,7 +31,7 @@ aliases => [
 
 - Add provider to `bootstrap/app.php`
 
-```php
+```
 $app->register(Altelma\LaravelMailChimp\MailChimpServiceProvider::class);
 ```
 
