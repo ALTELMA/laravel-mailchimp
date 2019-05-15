@@ -14,9 +14,10 @@ A packages provides you to connect mailchimp API v3
 providers => [
         Altelma\LaravelMailChimp\MailChimpServiceProvider::class  
 ],
-
+```
 Make sure you never use "MailChimp" or exists this in your project.
 After you finish config all run artisan to create config
+
 ```
 php artisan vendor:publish
 ```
@@ -26,6 +27,7 @@ For optional if you want to use Alias class you can add this to config/app.php
 aliases => [
       'MailChimp' => ALtelma\LaravelMailChimp\MailChimpFacde::class
 ]
+
 ```
 #### Lumen
 
@@ -33,8 +35,8 @@ aliases => [
 
 ```
 $app->register(Altelma\LaravelMailChimp\MailChimpServiceProvider::class);
-```
 
+```
 - Copy `vendor/altelma/laravel-mailchimp/config/mailchimp.php` to `config/mailchimp.php`
 
 - Add config to `bootstrap/app.php`
