@@ -12,7 +12,7 @@
     "authors": [
         {
             "name": "ALTELMA",
-            "email": "phongthorn.a@gmail.com"
+            "email": "nrohtgnohp@gmail.com"
         }
     ],
     "require": {
@@ -21,12 +21,19 @@
     "autoload": {
         "psr-4": {
             "Altelma\\LaravelMailChimp\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
+        "laravel": {
+            "providers": [
+                "Altelma\\JWT\\JWTServiceProvider"
+            ],
+            "aliases": {
+                "JWT": "Altelma\\JWT\\MailChimpFacade"
+            }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

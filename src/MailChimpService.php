@@ -1,52 +1,84 @@
 <?php
 
-namespace LaravelMailChimp;
+namespace Altelma\LaravelMailChimp;
 
 class MailChimpService
 {
-    private $apikey;
+    private $apiKey;
     private $endpoint = 'https://us1.api.mailchimp.com/3.0/';
 
-    public function __construct($apikey = '')
+    public function __construct(string $apiKey = '')
     {
-        $this->apikey = $apikey;
-        $this->getEndpoint($apikey);
+        $this->apiKey = $apiKey;
+        $this->getEndpoint($apiKey);
     }
 
-    private function getEndpoint($apikey)
+    /**
+     * @param string $apiKey
+     */
+    private function getEndpoint(string $apiKey)
     {
-        // if (!strpos($apikey, 'us1') !== FALSE) {
-        $dc = explode('-', $apikey)[1];
+        $dc = explode('-', $apiKey)[1];
         $this->endpoint = str_replace('us1', $dc, $this->endpoint);
-        // }
     }
 
-    public function get($method, $args = [])
+    /**
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function get(string $method, array $args = [])
     {
         return $this->makeRequest('get', $method, $args);
     }
 
-    public function post($method, $args = [])
+    /**
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function post(string $method, array $args = [])
     {
         return $this->makeRequest('post', $method, $args);
     }
 
-    public function patch($method, $args = [])
+    /**
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function patch(string $method, array $args = [])
     {
         return $this->makeRequest('patch', $method, $args);
     }
 
+    /**
+     * @param $method
+     * @param array $args
+     * @return mixed
+     */
     public function put($method, $args = [])
     {
         return $this->makeRequest('put', $method, $args);
     }
 
-    public function delete($method, $args = [])
+    /**
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function delete(string $method, array $args = [])
     {
         return $this->makeRequest('delete', $method, $args);
     }
 
-    private function makeRequest($request, $method, $args = [])
+    /**
+     * @param string $request
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    private function makeRequest(string $request, string $method, array $args = [])
     {
         $url = $this->endpoint.$method;
         $json_data = json_encode($args, JSON_FORCE_OBJECT);
@@ -56,7 +88,7 @@ class MailChimpService
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/vnd.api+json',
             'Content-Type: application/vnd.api+json',
-            'Authorization: apikey '.$this->apikey, ]);
+            'Authorization: apikey '.$this->apiKey, ]);
         // curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);

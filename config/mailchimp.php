@@ -1,5 +1,8 @@
 <?php
 
 return [
-    'api-key'     => '',
+    'apiKey' => '',
+    'lists' => [
+        'newsletter' => ''
+    ]
 ];

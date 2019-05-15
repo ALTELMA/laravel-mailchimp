@@ -28,14 +28,17 @@ class MailChimpServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/mailchimp.php', 'mailchimp');
         $this->app->singleton('MailChimp', function ($app) {
             $config = $app->make('config');
-            $token = $config->get('mailchimp.apikey');
+            $token = $config->get('mailchimp.apiKey');
 
             return new MailChimpService($token);
         });
     }
 
+    /**
+     * @return array
+     */
     public function provides()
     {
-        return ['MailChimp'];
+        return ['mailchimp'];
     }
 }
