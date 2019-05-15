@@ -2,7 +2,7 @@
 
 return [
     'apiKey' => '',
-    'lists' => [
-        'newsletter' => ''
-    ]
+    'lists'  => [
+        'newsletter' => '',
+    ],
 ];

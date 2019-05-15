@@ -24,7 +24,8 @@ class MailChimpService
 
     /**
      * @param string $method
-     * @param array $args
+     * @param array  $args
+     *
      * @return mixed
      */
     public function get(string $method, array $args = [])
@@ -34,7 +35,8 @@ class MailChimpService
 
     /**
      * @param string $method
-     * @param array $args
+     * @param array  $args
+     *
      * @return mixed
      */
     public function post(string $method, array $args = [])
@@ -44,7 +46,8 @@ class MailChimpService
 
     /**
      * @param string $method
-     * @param array $args
+     * @param array  $args
+     *
      * @return mixed
      */
     public function patch(string $method, array $args = [])
@@ -55,6 +58,7 @@ class MailChimpService
     /**
      * @param $method
      * @param array $args
+     *
      * @return mixed
      */
     public function put($method, $args = [])
@@ -64,7 +68,8 @@ class MailChimpService
 
     /**
      * @param string $method
-     * @param array $args
+     * @param array  $args
+     *
      * @return mixed
      */
     public function delete(string $method, array $args = [])
@@ -75,7 +80,8 @@ class MailChimpService
     /**
      * @param string $request
      * @param string $method
-     * @param array $args
+     * @param array  $args
+     *
      * @return mixed
      */
     private function makeRequest(string $request, string $method, array $args = [])
