@@ -1,37 +1,54 @@
+<p align="center">
+<img src="https://images.ctfassets.net/3g7s03pwyjhz/2IzXOYWCE0GGMMMcGaQGUa/417075681409c9f43a359a999498c71b/bigcartel_headerx2.png?w=998&fm=webp" alt="JWT">
+</p>
+
 # Laravel MailChimp
+A packages provides you to connect mailchimp API v3
 
-## Installation
-```
-require composer altelma/laravel-mailchimp --prefer-dist dev-master
-```
-or update your composer.json in root
-```
-{
-  "require": {
-    "altelma/laravel-mailchimp": "dev-master"
-  }
-}
-```
+### Setup
+- Run `$ composer require altelma/laravel-mailchimp`
 
-After installation finish. add this to your config/app.php
+- **(Only for Laravel 5.5 or minor)** Add provider to config/app.php
 
 ```
 providers => [
-        LaravelMailChimp\MailChimpServiceProvider::class  
+        Altelma\LaravelMailChimp\MailChimpServiceProvider::class  
 ],
-```
-
-For optional if you want to use Alias class you can add this to config/app.php
-```
-aliases => [
-      'MailChimp' => LaravelMailChimp\MailChimpFacde::class
-]
-```
 
 Make sure you never use "MailChimp" or exists this in your project.
 After you finish config all run artisan to create config
 ```
 php artisan vendor:publish
+```
+
+For optional if you want to use Alias class you can add this to config/app.php
+```
+aliases => [
+      'MailChimp' => ALtelma\LaravelMailChimp\MailChimpFacde::class
+]
+```
+#### Lumen
+
+- Add provider to `bootstrap/app.php`
+
+```php
+$app->register(Altelma\LaravelMailChimp\MailChimpServiceProvider::class);
+```
+
+- Copy `vendor/altelma/laravel-mailchimp/config/mailchimp.php` to `config/mailchimp.php`
+
+- Add config to `bootstrap/app.php`
+
+```php
+$app->configure('mailchimp');
+```
+- Allow call package via Facade, uncomment
+```php
+$app->withFacades();
+
+if (!class_exists('MailChimp')) {
+    class_alias('Altelma\LaravelMailChimp\MailChimpFacade', 'MailChimp');
+}
 ```
 
 ## Usage
