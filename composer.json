@@ -29,10 +29,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Altelma\\JWT\\JWTServiceProvider"
+                "Altelma\\LaravelMailChimp\\MailChimpServiceProvider"
             ],
             "aliases": {
-                "JWT": "Altelma\\JWT\\MailChimpFacade"
+                "JWT": "Altelma\\LaravelMailChimp\\MailChimpFacade"
             }
         }
     }
