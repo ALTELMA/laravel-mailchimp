@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'apiKey' => '',
+    'apiKey' => env('MAILCHIMP_APIKEY'),
     'lists'  => [
         'newsletter' => '',
     ],

@@ -1,7 +1,7 @@
 {
     "name": "altelma/laravel-mailchimp",
     "description": "A packages provide you to connect with mailchimp API v3, so easiest.",
-    "type": "Library",
+    "type": "library",
     "keywords": [
         "mailchimp",
         "api",
@@ -16,23 +16,20 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=7.4"
     },
     "autoload": {
         "psr-4": {
             "Altelma\\LaravelMailChimp\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Altelma\\LaravelMailChimp\\MailChimpServiceProvider"
+                "Altelma\\LaravelMailChimp\\LaravelMailChimpServiceProvider"
             ],
             "aliases": {
-                "JWT": "Altelma\\LaravelMailChimp\\MailChimpFacade"
+                "MailChimp": "Altelma\\LaravelMailChimp\\LaravelMailChimpFacade"
             }
         }
     }
