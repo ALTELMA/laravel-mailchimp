@@ -27,7 +27,7 @@ php artisan vendor:publish
 For optional if you want to use Alias class you can add this to config/app.php
 ```
 aliases => [
-      'MailChimp' => ALtelma\LaravelMailChimp\MailChimpFacde::class
+      'MailChimp' => ALtelma\LaravelMailChimp\MailChimpFacade::class
 ]
 
 ```
@@ -47,11 +47,12 @@ $app->register(Altelma\LaravelMailChimp\MailChimpServiceProvider::class);
 $app->configure('mailchimp');
 ```
 - Allow call package via Facade, uncomment
+
 ```php
 $app->withFacades();
 
 if (!class_exists('MailChimp')) {
-    class_alias('Altelma\LaravelMailChimp\MailChimpFacade', 'MailChimp');
+    class_alias('Altelma\LaravelMailChimp\LaravelMailChimp', 'MailChimp');
 }
 ```
 
@@ -75,5 +76,5 @@ return reponse()-json($results);
 
 
 ## Bug report
-This package is not perfect right, but can be improve together. If you found bug or have any suggestion.
-Send that to me or new issue. Thank you to use it.
+This package is not perfect right, but it can improve together. If you've found bug or have any suggestions.
+Send that to me or create a new issue. Thank you to use it.
