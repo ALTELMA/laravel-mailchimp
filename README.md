@@ -52,7 +52,7 @@ $app->configure('mailchimp');
 $app->withFacades();
 
 if (!class_exists('MailChimp')) {
-    class_alias('Altelma\LaravelMailChimp\LaravelMailChimpFacade', 'MailChimp');
+    class_alias('Altelma\LaravelMailChimp\LaravelMailChimp', 'MailChimp');
 }
 ```
 

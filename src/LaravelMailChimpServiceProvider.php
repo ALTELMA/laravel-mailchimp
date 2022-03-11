@@ -28,7 +28,7 @@ class LaravelMailChimpServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/mailchimp.php', 'mailchimp');
 
         $this->app->singleton(LaravelMailChimp::class, function () {
-            $token = config('line-notify.apiKey');
+            $token = config('mailchimp.apiKey');
 
             return new LaravelMailChimp($token);
         });

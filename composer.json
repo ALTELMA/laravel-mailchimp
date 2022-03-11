@@ -29,7 +29,7 @@
                 "Altelma\\LaravelMailChimp\\LaravelMailChimpServiceProvider"
             ],
             "aliases": {
-                "MailChimp": "Altelma\\LaravelMailChimp\\LaravelMailChimpFacade"
+                "MailChimp": "Altelma\\LaravelMailChimp\\Facades\\LaravelMailChimp"
             }
         }
     }

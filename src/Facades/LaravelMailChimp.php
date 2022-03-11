@@ -1,10 +1,10 @@
 <?php
 
-namespace Altelma\LaravelMailChimp;
+namespace Altelma\LaravelMailChimp\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class LaravelMailChimpFacade extends Facade
+class LaravelMailChimp extends Facade
 {
     /**
      * Get the registered name of the component.

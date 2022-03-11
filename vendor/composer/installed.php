@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-develop',
+    'version' => 'dev-develop',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '03b2612a178e6aa2f238a1062d3ed78f2cd12882',
     'name' => 'altelma/laravel-mailchimp',
   ),
   'versions' => 
   array (
     'altelma/laravel-mailchimp' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-develop',
+      'version' => 'dev-develop',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '03b2612a178e6aa2f238a1062d3ed78f2cd12882',
     ),
   ),
 );

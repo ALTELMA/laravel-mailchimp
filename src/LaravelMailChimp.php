@@ -2,21 +2,30 @@
 
 namespace Altelma\LaravelMailChimp;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+
 class LaravelMailChimp
 {
-    private string $apiKey;
+    private Client $client;
     private string $endpoint = 'https://us1.api.mailchimp.com/3.0/';
 
-    public function __construct(string $apiKey = '')
+    public function __construct(string $apiKey)
     {
-        $this->apiKey = $apiKey;
-        $this->getEndpoint($apiKey);
+        $this->setEndpoint($apiKey);
+        $this->client = new Client([
+            'base_uri' => $this->endpoint,
+            'headers' => [
+                'Authorization' => 'apikey ' . $apiKey,
+                'Content-Type' => 'application/json',
+            ],
+        ]);
     }
 
     /**
      * @param string $apiKey
      */
-    private function getEndpoint(string $apiKey)
+    private function setEndpoint(string $apiKey)
     {
         $dc             = explode('-', $apiKey)[1];
         $this->endpoint = str_replace('us1', $dc, $this->endpoint);
@@ -24,112 +33,76 @@ class LaravelMailChimp
 
     /**
      * @param string $method
-     * @param array  $args
+     * @param array $args
      *
-     * @return mixed
+     * @return object
+     *
+     * @throws GuzzleException
      */
-    public function get(string $method, array $args = [])
+    public function get(string $method, array $args = []): object
     {
-        return $this->makeRequest('get', $method, $args);
+        $response = $this->client->get($method, $args);
+
+        return json_decode($response->getBody()->getContents());
     }
 
     /**
      * @param string $method
-     * @param array  $args
+     * @param array $args
      *
-     * @return mixed
+     * @return object
+     *
+     * @throws GuzzleException
      */
-    public function post(string $method, array $args = [])
+    public function post(string $method, array $args = []): object
     {
-        return $this->makeRequest('post', $method, $args);
+        $response = $this->client->post($method, $args);
+
+        return json_decode($response->getBody()->getContents());
     }
 
     /**
      * @param string $method
-     * @param array  $args
-     *
-     * @return mixed
-     */
-    public function patch(string $method, array $args = [])
-    {
-        return $this->makeRequest('patch', $method, $args);
-    }
-
-    /**
-     * @param $method
      * @param array $args
      *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
-    public function put($method, $args = [])
+    public function patch(string $method, array $args = []): mixed
     {
-        return $this->makeRequest('put', $method, $args);
+        $response = $this->client->patch($method, $args);
+
+        return json_decode($response->getBody()->getContents());
     }
 
     /**
      * @param string $method
-     * @param array  $args
+     * @param array $args
      *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
-    public function delete(string $method, array $args = [])
+    public function put(string $method, array $args = []): mixed
     {
-        return $this->makeRequest('delete', $method, $args);
+        $response = $this->client->put($method, $args);
+
+        return json_decode($response->getBody()->getContents());
     }
 
     /**
-     * @param string $request
      * @param string $method
-     * @param array  $args
+     * @param array $args
      *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
-    private function makeRequest(string $request, string $method, array $args = [])
+    public function delete(string $method, array $args = []): mixed
     {
-        $url       = $this->endpoint . $method;
-        $json_data = json_encode($args, JSON_FORCE_OBJECT);
+        $response = $this->client->delete($method, $args);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/vnd.api+json',
-            'Content-Type: application/vnd.api+json',
-            'Authorization: apikey ' . $this->apiKey, ]);
-        // curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-
-        switch ($request) {
-            case 'post':
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-            break;
-
-            case 'get':
-                $query = http_build_query($args);
-                curl_setopt($ch, CURLOPT_URL, $url . '?' . $query);
-            break;
-
-            case 'delete':
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-            break;
-
-            case 'patch':
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-            break;
-
-            case 'put':
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-            break;
-        }
-
-        $result = curl_exec($ch);
-        curl_close($ch);
-
-        return json_decode($result);
+        return json_decode($response->getBody()->getContents());
     }
 }
